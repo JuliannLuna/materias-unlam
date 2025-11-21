@@ -69,7 +69,7 @@ const App = () => {
                     key={materia.id} 
                     className={`bg-[#1e1e1e] p-4 rounded-lg border-l-4 shadow-md flex flex-col justify-between transition-all
                       ${bordeColor} 
-                      ${habilitada ? 'opacity-100' : 'opacity-40 grayscale'}
+                      ${habilitada ? 'opacity-100' : 'opacity-60 grayscale'}
                     `}
                   >
                     <div className="mb-3">
