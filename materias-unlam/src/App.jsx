@@ -147,7 +147,7 @@ const App = () => {
                       </div>
 
                       {habilitada && estado != 0 && estado != 1 && (
-                        <div className="flex items-center gap-2">
+                        <div className="max-w-md flex items-center gap-2">
                           <p className="text-white text-sm font-medium">
                             Nota:
                           </p>
