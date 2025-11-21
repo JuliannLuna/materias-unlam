@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 // Asegúrate de que la ruta sea correcta según donde guardaste el archivo
 import { materias } from "./data/materias";
+import Titulo from "./components/Titulo";
+import Subtitulo from "./components/Subtitulo";
 
 const App = () => {
   // Estado: { "03621": 2, "03628": 1, ... }
@@ -38,13 +40,17 @@ const App = () => {
 
   // Definimos los años de la carrera
   const anios = [1, 2, 3, 4, 5, "Transversal"];
+  const totalMateriasCarrera = materias.length;
+  const totalGeneralAprobadas = materias.filter(
+    (m) => (progreso[m.id] || 0) === 2
+  ).length;
 
   return (
-    <div className="bg-[#030712] min-h-screen p-8 text-white font-sans">
-      <h1 className="text-3xl font-bold text-center mb-8 text-green-600">
-        Plan de Estudios UNLaM
-      </h1>
-
+    <main className="min-h-screen p-8 text-white font-sans">
+      <Titulo
+        texto="Plan de Estudios UNLaM"
+        clases="text-3xl font-bold text-center mb-8 text-green-600"
+      />
       {/* Recorremos los AÑOS */}
       {anios.map((anio) => {
         // 1. FILTRAR las materias de este año
@@ -65,9 +71,11 @@ const App = () => {
             <div className="mb-6">
               <div className="flex items-center justify-between mb-2 border-b border-gray-800 pb-2">
                 {/* Título del Año + Contador */}
-                <h2 className="text-2xl font-bold text-grey-100 flex items-center gap-3">
-                  {typeof anio === "number" ? `Año ${anio}` : anio}
-                </h2>
+                <Titulo
+                  texto={typeof anio === "number" ? `Año ${anio}` : anio}
+                  clases="text-2xl font-bold text-grey-100 flex items-center gap-3"
+                />
+
                 {/* Badge con el contador (Ej: 4/12) */}
                 <span className="text-sm bg-gray-800 text-gray-100 px-3 py-1 rounded-full font-mono">
                   {aprobadas} / {totalMaterias} Aprobadas
@@ -96,9 +104,10 @@ const App = () => {
                   >
                     <div className="mb-4">
                       <div className="flex justify-between items-center">
-                        <h3 className="font-semibold text-lg leading-snug text-gray-100">
-                          {materia.nombre}
-                        </h3>
+                        <Subtitulo
+                          texto={materia.nombre}
+                          clases="font-semibold text-lg leading-snug text-gray-100"
+                        />
                         <p className="text-xs text-white">{materia.id}</p>
                       </div>
 
@@ -150,7 +159,24 @@ const App = () => {
           </div>
         );
       })}
-    </div>
+      <div className="grid grid-cols-3 grid-flow-col content-between  gap-10">
+        <Subtitulo
+          texto={`Total de materias: ${totalMateriasCarrera}`}
+          clases="text-2xl font-bold bg-[#1e1e1e] p-3 rounded-lg text-center border-l-4 border-green-600"
+        />
+        <Subtitulo
+          texto={`Total de materias aprobadas: ${totalGeneralAprobadas}`}
+          clases="text-2xl font-bold bg-[#1e1e1e] p-3 rounded-lg text-center border-l-4 border-green-600"
+        />
+        <Subtitulo
+          texto={`Porcentaje de la carrera: ${(
+            (totalGeneralAprobadas * 100) /
+            totalMateriasCarrera
+          ).toFixed(2)}%`}
+          clases="text-2xl font-bold bg-[#1e1e1e] p-3 rounded-lg text-center border-l-4 border-green-600"
+        />
+      </div>
+    </main>
   );
 };
 
