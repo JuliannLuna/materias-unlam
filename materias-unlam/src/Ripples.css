@@ -11,11 +11,11 @@
 
 .ripple-circle {
   position: absolute;
-  
+
   /* CAMBIO 1: Posicionamos en el borde superior */
-  top: 0;       
+  top: 0;
   left: 50%;
-  
+
   /* CAMBIO 2: Ajustamos la traslación vertical
      translate(-50%, -50%):
      - El primer -50% centra horizontalmente.
@@ -24,11 +24,11 @@
      ocultando la mitad de arriba y mostrando la mitad de abajo.
   */
   transform: translate(-50%, -50%);
-  
-  border: 1px solid var(--color-green-600);; /* Ajusta el color de la onda a tu gusto */
+
+  border: 1px solid var(--color-green-600); /* Ajusta el color de la onda a tu gusto */
   border-radius: 50%;
   background: transparent;
-  
+
   animation: ripple-effect 6s linear infinite;
   opacity: 0;
 }

@@ -209,28 +209,28 @@ const App = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 content-between gap-4">
         <Subtitulo
           texto={`Total de materias: ${totalMateriasCarrera}`}
-          clases="text-2xl font-bold bg-gray-800 p-3 rounded-lg text-center border-l-4 border-green-600 text-white"
+          clases="text-lg font-bold bg-gray-800 p-3 rounded-lg text-center border-l-4 border-green-600 text-white"
         />
         <Subtitulo
           texto={`Total de materias aprobadas: ${totalGeneralAprobadas}`}
-          clases="text-2xl font-bold bg-gray-800 p-3 rounded-lg text-center border-l-4 border-green-600 text-white"
+          clases="text-lg font-bold bg-gray-800 p-3 rounded-lg text-center border-l-4 border-green-600 text-white"
         />
         <Subtitulo
           texto={`Materias restantes: ${
             totalMateriasCarrera - totalGeneralAprobadas
           }`}
-          clases="text-2xl font-bold bg-gray-800 p-3 rounded-lg text-center border-l-4 border-green-600 text-white"
+          clases="text-lg font-bold bg-gray-800 p-3 rounded-lg text-center border-l-4 border-green-600 text-white"
         />
         <Subtitulo
           texto={`Porcentaje de la carrera: ${(
             (totalGeneralAprobadas * 100) /
             totalMateriasCarrera
           ).toFixed(2)}%`}
-          clases="text-2xl font-bold bg-gray-800 p-3 rounded-lg text-center border-l-4 border-green-600 text-white"
+          clases="text-lg font-bold bg-gray-800 p-3 rounded-lg text-center border-l-4 border-green-600 text-white"
         />
         <Subtitulo
           texto={`Promedio (Grado): ${promedio}`}
-          clases="md:col-span-2 text-2xl font-bold bg-gray-800 p-3 rounded-lg text-center border-l-4 border-green-600 text-white"
+          clases="md:col-span-2 text-lg font-bold bg-gray-800 p-3 rounded-lg text-center border-l-4 border-green-600 text-white"
         />
       </div>
     </main>

@@ -20,7 +20,7 @@ const InputLimitado = ({ nota, alCambiar }) => {
       value={nota} // Input controlado por :) React
       onChange={manejarCambio}
       placeholder="Ej: 5"
-      className="pl-2 text-white border border-white rounded-lg border-1 focus:ring-brand focus:outline"
+      className="w-25% pl-2 text-white border border-white rounded-lg border-1 focus:ring-brand focus:outline"
     />
   );
 };
