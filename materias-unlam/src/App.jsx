@@ -99,6 +99,11 @@ const App = () => {
           (m) => (progreso[m.id] || 0) === 2
         ).length;
 
+        const [IDexpandida, setIDexpandida] = useState(null);
+        const toggleExpand = (anio) => {
+          setIDexpandida(IDexpandida === anio ? null : anio);
+        };
+
         // --- AQUÍ ESTABA EL ERROR: Faltaba el 'return' ---
         return (
           <div key={anio} className="mb-12">
@@ -106,10 +111,22 @@ const App = () => {
             <div className="mb-6">
               <div className="flex items-center justify-between mb-2 border-b border-gray-800 pb-2">
                 {/* Título del Año + Contador */}
-                <Titulo
-                  texto={typeof anio === "number" ? `Año ${anio}` : anio}
-                  clases="text-2xl font-bold text-white flex items-center gap-3"
-                />
+                <div className="flex gap-3 items-center">
+                  <button
+                    onClick={() => toggleExpand(anio)}
+                    className="w-10 h-10 text-2xl font-bold bg-gray-800 rounded-lg flex items-center justify-center cursor-pointer"
+                  >
+                    <i
+                      className={`bx bx-chevron-right transition-all duration-300 ${
+                        IDexpandida != anio ? "rotate-90" : ""
+                      }`}
+                    ></i>
+                  </button>
+                  <Titulo
+                    texto={typeof anio === "number" ? `Año ${anio}` : anio}
+                    clases="text-2xl font-bold text-white flex items-center gap-3"
+                  />
+                </div>
 
                 {/* Badge con el contador (Ej: 4/12) */}
                 <span className="text-sm bg-gray-800 text-gray-100 px-3 py-1 rounded-full font-mono">
@@ -119,7 +136,11 @@ const App = () => {
             </div>
 
             {/* Grid de Materias */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 transition-all duration-300 overflow-hidden ${
+                IDexpandida != anio ? "opacity-100" : "opacity-0 max-h-0"
+              }`}
+            >
               {materiasDelAnio.map((materia) => {
                 const habilitada = estaHabilitada(materia);
                 const estado = progreso[materia.id] || 0;
